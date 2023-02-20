@@ -1,5 +1,7 @@
 # Brimborium.Registrator
 
+Version 1.0.0.0
+
 dotnet core 7
 
 work in progress
