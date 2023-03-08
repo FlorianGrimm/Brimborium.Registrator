@@ -1,13 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyModel;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xunit;
+﻿
 
 namespace Brimborium.Registrator.Test {
     public class BasicTest {
@@ -23,7 +14,7 @@ namespace Brimborium.Registrator.Test {
                         .AsSelf()
                     ;
                 }, st => {
-                    var implementationTypes = st.Items.Select(i => i.ImplementationType).ToArray();
+                    var implementationTypes = st.ListServicePopulation.Select(i => i.ImplementationType).ToArray();
                     Assert.Contains(implementationTypes, i => typeof(DummyImpl1).Equals(i));
                 });
         }
@@ -40,7 +31,7 @@ namespace Brimborium.Registrator.Test {
                         .AsSelf()
                     ;
                 }, st => {
-                    var implementationTypes = st.Items.Select(i => i.ImplementationType).ToArray();
+                    var implementationTypes = st.ListServicePopulation.Select(i => i.ImplementationType).ToArray();
                     Assert.Contains(implementationTypes, i => typeof(DummyImpl1).Equals(i));
                     Assert.DoesNotContain(implementationTypes, i => typeof(DummyImpl1AttributeSingleton).Equals(i));
                 });
@@ -59,7 +50,7 @@ namespace Brimborium.Registrator.Test {
                         .AsImplementedInterfaces();
                     ;
                 }, st => {
-                    var implementationTypes = st.Items.Select(i => i.ImplementationType).ToArray();
+                    var implementationTypes = st.ListServicePopulation.Select(i => i.ImplementationType).ToArray();
                     Assert.Contains(implementationTypes, i => typeof(DummyImpl1AttributeSingleton).Equals(i));
                     Assert.DoesNotContain(implementationTypes, i => typeof(BasicTest).Equals(i));
                 });

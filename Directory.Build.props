@@ -11,7 +11,6 @@
     <RootDirectory>$(MSBuildThisFileDirectory)</RootDirectory>
     <BaseIntermediateOutputPath>$(RootDirectory)output\$(MSBuildProjectName)\obj\$(PlatformName)</BaseIntermediateOutputPath>
     <BaseOutputPath>$(RootDirectory)output\$(MSBuildProjectName)\bin\$(PlatformName)</BaseOutputPath>
-    <LangVersion>Latest</LangVersion>
     <GitVersionBaseDirectory>$(MSBuildThisFileDirectory)</GitVersionBaseDirectory>
   </PropertyGroup>
   <PropertyGroup>

@@ -3,10 +3,10 @@
 		<IsPackable>true</IsPackable>
 		<IsPublishable>true</IsPublishable>
         <PackageOutputPath>./nupkg</PackageOutputPath>
-		<RepositoryUrl>https://github.com/FlorianGrimm/Brimborium.Registrator.git</RepositoryUrl>
+		<RepositoryUrl>https://github.com/FlorianGrimm/Brimborium.Registrator</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<EmbedUntrackedSources>false</EmbedUntrackedSources>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TF_BUILD)' == 'true' OR '$Configuration' == 'Release'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>

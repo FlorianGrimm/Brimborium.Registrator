@@ -1,58 +1,54 @@
 ﻿#pragma warning disable IDE0041 // Use 'is null' check
-using Microsoft.Extensions.DependencyInjection;
 
-using System;
-using System.Diagnostics;
+namespace Brimborium.Registrator.Internals;
 
-namespace Brimborium.Registrator.Internals {
-    [DebuggerStepThrough]
-    internal static class Preconditions {
-        public static T NotNull<T>(T value, string parameterName)
-            where T : class {
-            if (ReferenceEquals(value, null)) {
-                NotEmpty(parameterName, nameof(parameterName));
+[DebuggerStepThrough]
+internal static class Preconditions {
+    public static T NotNull<T>(T value, string parameterName)
+        where T : class {
+        if (ReferenceEquals(value, null)) {
+            NotEmpty(parameterName, nameof(parameterName));
 
-                throw new ArgumentNullException(parameterName);
-            }
-
-            return value;
+            throw new ArgumentNullException(parameterName);
         }
 
-        public static string NotEmpty(string value, string parameterName) {
-            if (ReferenceEquals(value, null)) {
-                NotEmpty(parameterName, nameof(parameterName));
+        return value;
+    }
 
-                throw new ArgumentNullException(parameterName);
-            }
+    public static string NotEmpty(string value, string parameterName) {
+        if (ReferenceEquals(value, null)) {
+            NotEmpty(parameterName, nameof(parameterName));
 
-            if (value.Length == 0) {
-                NotEmpty(parameterName, nameof(parameterName));
-
-                throw new ArgumentException("String value cannot be null.", parameterName);
-            }
-
-            return value;
+            throw new ArgumentNullException(parameterName);
         }
 
-        public static TEnum IsDefined<TEnum>(TEnum value, string parameterName) where TEnum : struct {
-            if (!Enum.IsDefined(typeof(TEnum), value)) {
-                NotEmpty(parameterName, nameof(parameterName));
+        if (value.Length == 0) {
+            NotEmpty(parameterName, nameof(parameterName));
 
+            throw new ArgumentException("String value cannot be null.", parameterName);
+        }
+
+        return value;
+    }
+
+    public static TEnum IsDefined<TEnum>(TEnum value, string parameterName) where TEnum : struct {
+        if (!Enum.IsDefined(typeof(TEnum), value)) {
+            NotEmpty(parameterName, nameof(parameterName));
+
+            throw new ArgumentOutOfRangeException(parameterName);
+        }
+
+        return value;
+    }
+
+    public static void EnsureValidServiceLifetime(ServiceLifetime value, string parameterName)  {
+        switch (value) {
+            case ServiceLifetime.Singleton:
+            case ServiceLifetime.Scoped:
+            case ServiceLifetime.Transient:
+                return;
+            default:
                 throw new ArgumentOutOfRangeException(parameterName);
-            }
-
-            return value;
-        }
-
-        public static void EnsureValidServiceLifetime(ServiceLifetime value, string parameterName)  {
-            switch (value) {
-                case ServiceLifetime.Singleton:
-                case ServiceLifetime.Scoped:
-                case ServiceLifetime.Transient:
-                    return;
-                default:
-                    throw new ArgumentOutOfRangeException(parameterName);
-            }
         }
     }
 }

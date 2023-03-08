@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
+		<PackageDescription>Type Scanning for Microsoft.Extensions.DependencyInjection</PackageDescription>
 	</PropertyGroup>
 	
 	<Import Project="..\build\package.targets" />
