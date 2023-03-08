@@ -21,6 +21,9 @@ dotnet nuget add source --username $USERNAME --password $GITHUB_TOKEN --store-pa
 
 # Publish
 
+nbgv tag 1.1.0
+nbgv set-version 1.1.0
+
 ```PowerShell
 
 $json = Get-Content "${Env:\USERPROFILE}\Documents\secure\github.json" | ConvertFrom-Json
