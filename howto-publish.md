@@ -21,8 +21,8 @@ dotnet nuget add source --username $USERNAME --password $GITHUB_TOKEN --store-pa
 
 # Publish
 
-nbgv tag 1.1.0
-nbgv set-version 1.1.0
+nbgv tag 1.1.1
+nbgv set-version 1.1.1
 
 ```PowerShell
 
@@ -36,7 +36,10 @@ $GITHUB_TOKEN=$json.GITHUB_TOKEN
 dir Brimborium.Registrator.Abstractions\nupkg\*.nupkg | Remove-Item
 dir Brimborium.Registrator\nupkg\*.nupkg | Remove-Item
 
-dotnet pack --configuration Release
+dotnet pack --configuration Release /p:PublicRelease=true
+
+dir Brimborium.Registrator.Abstractions\nupkg\*.nupkg
+dir Brimborium.Registrator\nupkg\*.nupkg
 
 $nupkg = dir Brimborium.Registrator.Abstractions\nupkg\*.nupkg | %{$_.FullName}
 dotnet nuget push $nupkg --source "github" --api-key $GITHUB_TOKEN
