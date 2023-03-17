@@ -2,7 +2,7 @@
 
 Version 1.1.0
 
-dotnet core 7
+Utility register services for Dependency Injection Attribute based
 
 
 ## Sample Dependency Injection with Registrator - Attribute based

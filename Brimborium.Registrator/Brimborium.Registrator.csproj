@@ -6,9 +6,23 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<LangVersion>latest</LangVersion>
 		<PackageDescription>Type Scanning for Microsoft.Extensions.DependencyInjection</PackageDescription>
+		<Copyright>MIT</Copyright>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Description>Utility register services for Dependency Injection Attribute based</Description>
+		<AssemblyVersion>1.1.1.0</AssemblyVersion>
+		<FileVersion>1.1.1.0</FileVersion>
 	</PropertyGroup>
 	
 	<Import Project="..\build\package.targets" />
+	
+	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />

@@ -48,3 +48,16 @@ $nupkg = dir Brimborium.Registrator\nupkg\*.nupkg | %{$_.FullName}
 dotnet nuget push $nupkg --source "github" --api-key $GITHUB_TOKEN
 
 ```
+
+
+nbgv set-version prepare-release 1.1.1
+
+nbgv set-version 1.1.1
+
+dotnet build --configuration Release /p:PublicRelease=true
+
+nuget
+https://www.nuget.org/packages/manage/upload
+nuget SetApiKey x
+dotnet nuget push Brimborium.Registrator.1.1.1.nupkg --source https://api.nuget.org/v3/index.json
+dotnet nuget push Brimborium.Registrator.1.1.1.snupkg --source https://api.nuget.org/v3/index.json
