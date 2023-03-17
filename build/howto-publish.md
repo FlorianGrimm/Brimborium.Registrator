@@ -33,13 +33,13 @@ $USERNAME=$json.USERNAME
 $GITHUB_TOKEN=$json.GITHUB_TOKEN
 
 
-dir Brimborium.Registrator.Abstractions\nupkg\*.nupkg | Remove-Item
-dir Brimborium.Registrator\nupkg\*.nupkg | Remove-Item
+dir Brimborium.Registrator.Abstractions\nupkg\*.**nupkg | Remove-Item
+dir Brimborium.Registrator\nupkg\*.**nupkg | Remove-Item
 
 dotnet pack --configuration Release /p:PublicRelease=true
 
-dir Brimborium.Registrator.Abstractions\nupkg\*.nupkg
-dir Brimborium.Registrator\nupkg\*.nupkg
+dir Brimborium.Registrator.Abstractions\nupkg\*.*nupkg
+dir Brimborium.Registrator\nupkg\*.*nupkg
 
 $nupkg = dir Brimborium.Registrator.Abstractions\nupkg\*.nupkg | %{$_.FullName}
 dotnet nuget push $nupkg --source "github" --api-key $GITHUB_TOKEN
@@ -59,5 +59,7 @@ dotnet build --configuration Release /p:PublicRelease=true
 nuget
 https://www.nuget.org/packages/manage/upload
 nuget SetApiKey x
-dotnet nuget push Brimborium.Registrator.1.1.1.nupkg --source https://api.nuget.org/v3/index.json
-dotnet nuget push Brimborium.Registrator.1.1.1.snupkg --source https://api.nuget.org/v3/index.json
+dotnet nuget push Brimborium.Registrator.Abstractions\nupkg\Brimborium.Registrator.Abstractions.1.1.1.nupkg --source https://api.nuget.org/v3/index.json
+dotnet nuget push Brimborium.Registrator.Abstractions\nupkg\Brimborium.Registrator.Abstractions.1.1.1.snupkg --source https://api.nuget.org/v3/index.json
+dotnet nuget push Brimborium.Registrator\nupkg\Brimborium.Registrator.1.1.1.nupkg --source https://api.nuget.org/v3/index.json
+dotnet nuget push Brimborium.Registrator\nupkg\Brimborium.Registrator.1.1.1.snupkg --source https://api.nuget.org/v3/index.json
